@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>AutonomousLinear.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d55fde; font-style: italic;}
+.s1 { color: #bbbbbb;}
+.s2 { color: #5c6370; font-style: italic;}
+.s3 { color: #89ca78;}
+.s4 { color: #d19a66;}
+</style>
+</head>
+<body bgcolor="#282c34">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+AutonomousLinear.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org.firstinspires.ftc.teamcode;</span>
+
+<span class="s0">import </span><span class="s1">com.qualcomm.robotcore.eventloop.opmode.Autonomous;</span>
+<span class="s0">import </span><span class="s1">com.qualcomm.robotcore.eventloop.opmode.Disabled;</span>
+<span class="s0">import </span><span class="s1">com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;</span>
+<span class="s0">import </span><span class="s1">com.qualcomm.robotcore.eventloop.opmode.OpMode;</span>
+<span class="s0">import </span><span class="s1">com.qualcomm.robotcore.util.ElapsedTime;</span>
+
+<span class="s2">//@Disabled</span>
+<span class="s1">@Autonomous(name=</span><span class="s3">&quot;Autonomous&quot;</span><span class="s1">,group=</span><span class="s3">&quot;Testbot&quot;</span><span class="s1">)</span>
+
+<span class="s0">public class </span><span class="s1">AutonomousLinear </span><span class="s0">extends </span><span class="s1">LinearOpMode {</span>
+
+    <span class="s1">HardwareTestbot robot = </span><span class="s0">new </span><span class="s1">HardwareTestbot();</span>
+    <span class="s0">private </span><span class="s1">ElapsedTime runtime = </span><span class="s0">new </span><span class="s1">ElapsedTime();</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">runOpMode(){</span>
+
+        <span class="s1">robot.init(hardwareMap);</span>
+
+        <span class="s1">telemetry.addData(</span><span class="s3">&quot;Status&quot;</span><span class="s1">,</span><span class="s3">&quot;Ready to run&quot;</span><span class="s1">); </span><span class="s2">// shows up on Driver hub</span>
+        <span class="s1">telemetry.update();</span>
+
+        <span class="s1">waitForStart();</span>
+
+        <span class="s1">robot.Left_DcMotor.setPower(</span><span class="s4">1</span><span class="s1">); </span><span class="s2">//going forward</span>
+        <span class="s1">robot.Right_DcMotor.setPower(</span><span class="s4">1</span><span class="s1">);</span>
+        <span class="s1">sleep(</span><span class="s4">1000</span><span class="s1">);</span>
+
+        <span class="s1">robot.Left_DcMotor.setPower(- </span><span class="s4">.5</span><span class="s1">); </span><span class="s2">//turning</span>
+        <span class="s1">robot.Right_DcMotor.setPower(</span><span class="s4">.5</span><span class="s1">);</span>
+        <span class="s1">sleep(</span><span class="s4">750</span><span class="s1">);</span>
+
+        <span class="s1">robot.Left_DcMotor.setPower(</span><span class="s4">1</span><span class="s1">); </span><span class="s2">//going forward again</span>
+        <span class="s1">robot.Right_DcMotor.setPower(</span><span class="s4">1</span><span class="s1">);</span>
+        <span class="s1">sleep(</span><span class="s4">1000</span><span class="s1">);</span>
+
+        <span class="s1">robot.Left_DcMotor.setPower(</span><span class="s4">0</span><span class="s1">); </span><span class="s2">//turn off motors</span>
+        <span class="s1">robot.Right_DcMotor.setPower(</span><span class="s4">0</span><span class="s1">);</span>
+        <span class="s1">sleep(</span><span class="s4">1000</span><span class="s1">);</span>
+
+        <span class="s1">telemetry.addData(</span><span class="s3">&quot;Path&quot;</span><span class="s1">,</span><span class="s3">&quot;Complete&quot;</span><span class="s1">);</span>
+        <span class="s1">telemetry.update();</span>
+        <span class="s1">sleep(</span><span class="s4">1000</span><span class="s1">);</span>
+
+        <span class="s0">while </span><span class="s1">(opModeIsActive()){</span>
+
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

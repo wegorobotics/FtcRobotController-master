@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>HardwareTestbot.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d55fde; font-style: italic;}
+.s1 { color: #bbbbbb;}
+.s2 { color: #5c6370; font-style: italic;}
+.s3 { color: #89ca78;}
+.s4 { color: #d19a66;}
+</style>
+</head>
+<body bgcolor="#282c34">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+HardwareTestbot.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">org.firstinspires.ftc.teamcode;</span>
+
+<span class="s0">import </span><span class="s1">com.qualcomm.robotcore.eventloop.opmode.Disabled;</span>
+<span class="s0">import </span><span class="s1">com.qualcomm.robotcore.hardware.DcMotor;</span>
+<span class="s0">import </span><span class="s1">com.qualcomm.robotcore.hardware.DcMotorEx;</span>
+<span class="s0">import </span><span class="s1">com.qualcomm.robotcore.hardware.DcMotorSimple;</span>
+<span class="s0">import </span><span class="s1">com.qualcomm.robotcore.hardware.DigitalChannel;</span>
+<span class="s0">import </span><span class="s1">com.qualcomm.robotcore.hardware.HardwareMap;</span>
+<span class="s0">import </span><span class="s1">com.qualcomm.robotcore.hardware.Servo;</span>
+<span class="s0">import </span><span class="s1">com.qualcomm.robotcore.util.ElapsedTime;</span>
+
+<span class="s2">//@Disabled</span>
+<span class="s0">public class </span><span class="s1">HardwareTestbot {</span>
+
+    <span class="s0">public </span><span class="s1">DcMotor Left_DcMotor;</span>
+    <span class="s0">public </span><span class="s1">DcMotor Right_DcMotor;</span>
+    <span class="s0">public </span><span class="s1">DcMotorEx Hex_Motor;</span>
+    <span class="s0">public </span><span class="s1">Servo grab;</span>
+    <span class="s0">public </span><span class="s1">Servo arm;</span>
+    <span class="s0">public </span><span class="s1">DigitalChannel touchSens;</span>
+
+    <span class="s1">HardwareMap hwMap;</span>
+    <span class="s0">private </span><span class="s1">ElapsedTime period = </span><span class="s0">new </span><span class="s1">ElapsedTime();</span>
+
+    <span class="s0">public </span><span class="s1">HardwareTestbot(){</span>
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">init(HardwareMap ahwMap) {</span>
+
+        <span class="s1">hwMap = ahwMap;</span>
+
+        <span class="s1">Left_DcMotor = hwMap.get(DcMotor.</span><span class="s0">class</span><span class="s1">, </span><span class="s3">&quot;Left_DcMotor&quot;</span><span class="s1">);</span>
+        <span class="s1">Right_DcMotor = hwMap.get(DcMotor.</span><span class="s0">class</span><span class="s1">,</span><span class="s3">&quot;Right_DcMotor&quot;</span><span class="s1">);</span>
+        <span class="s1">Hex_Motor = hwMap.get(DcMotorEx.</span><span class="s0">class</span><span class="s1">,</span><span class="s3">&quot;Hex_Motor&quot;</span><span class="s1">);</span>
+        <span class="s1">grab = hwMap.get(Servo.</span><span class="s0">class</span><span class="s1">,</span><span class="s3">&quot;servoClaw&quot;</span><span class="s1">);</span>
+        <span class="s1">arm = hwMap.get(Servo.</span><span class="s0">class</span><span class="s1">,</span><span class="s3">&quot;servoArm&quot;</span><span class="s1">);</span>
+        <span class="s1">touchSens = hwMap.get(DigitalChannel.</span><span class="s0">class</span><span class="s1">,</span><span class="s3">&quot;touch_Sensor&quot;</span><span class="s1">);</span>
+
+        <span class="s1">touchSens.setMode(DigitalChannel.Mode.INPUT);</span>
+
+        <span class="s1">Left_DcMotor.setDirection(DcMotor.Direction.REVERSE);</span>
+
+        <span class="s1">Left_DcMotor.setPower(</span><span class="s4">0</span><span class="s1">);</span>
+        <span class="s1">Right_DcMotor.setPower(</span><span class="s4">0</span><span class="s1">);</span>
+
+        <span class="s1">Left_DcMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);</span>
+        <span class="s1">Right_DcMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);</span>
+        <span class="s1">Hex_Motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);</span>
+
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>
