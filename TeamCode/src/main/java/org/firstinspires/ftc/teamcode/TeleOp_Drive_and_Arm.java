@@ -34,7 +34,7 @@ public class TeleOp_Drive_and_Arm extends OpMode {
 
     @Override
     public void start() {
-        grab.setPosition(0);
+        grab.setPosition(0.25);
         armServo.setPosition(0.5);
     }
 
@@ -51,7 +51,8 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         //boolean buttonState = touchSens.getState();
         boolean aBtn = gamepad1.a;
         boolean xBtn = gamepad1.x;
-        int grabPos = aBtn ? 1:0;
+
+        double grabPos = aBtn ? 1:0.25;
         int wheelState = xBtn ? 1:0;
 
         grab.setPosition(grabPos);

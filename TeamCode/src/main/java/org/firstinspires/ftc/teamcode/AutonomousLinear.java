@@ -22,12 +22,12 @@ public class AutonomousLinear extends LinearOpMode{
 
         waitForStart();
 
-        robot.Left_DcMotor.setPower(turnSpeed); //turning left
-        robot.Right_DcMotor.setPower(-turnSpeed);
+        robot.Left_DcMotor.setPower(-turnSpeed); //turning left
+        robot.Right_DcMotor.setPower(turnSpeed);
         sleep(2000);
 
-        robot.Left_DcMotor.setPower(-driveSpeed); //going forward again
-        robot.Right_DcMotor.setPower(-driveSpeed);
+        robot.Left_DcMotor.setPower(driveSpeed); //going forward again
+        robot.Right_DcMotor.setPower(driveSpeed);
 
         telemetry.addData("Path","Complete");
         telemetry.update();
