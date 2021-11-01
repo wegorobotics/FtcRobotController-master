@@ -41,7 +41,7 @@ public class HardwareTestbot {
 
         touchSens.setMode(DigitalChannel.Mode.INPUT);
 
-        Left_DcMotor.setDirection(DcMotor.Direction.REVERSE);
+        Right_DcMotor.setDirection(DcMotor.Direction.REVERSE);
 
         Left_DcMotor.setPower(0);
         Right_DcMotor.setPower(0);
