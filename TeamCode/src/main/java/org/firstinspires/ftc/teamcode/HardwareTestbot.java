@@ -4,6 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
+import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -17,6 +19,7 @@ public class HardwareTestbot {
     public Servo grab;
     public Servo arm;
     public DigitalChannel touchSens;
+    public DistanceSensor distanceSens;
 
     HardwareMap hwMap;
     private ElapsedTime period = new ElapsedTime();
@@ -34,6 +37,7 @@ public class HardwareTestbot {
         grab = hwMap.get(Servo.class,"servoClaw");
         arm = hwMap.get(Servo.class,"servoArm");
         touchSens = hwMap.get(DigitalChannel.class,"touch_Sensor");
+        distanceSens = hwMap.get(DistanceSensor.class,"distanceSensor");
 
         touchSens.setMode(DigitalChannel.Mode.INPUT);
 

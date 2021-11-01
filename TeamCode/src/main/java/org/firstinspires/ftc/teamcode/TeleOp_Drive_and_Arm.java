@@ -53,10 +53,10 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         boolean xBtn = gamepad1.x;
 
         double grabPos = aBtn ? 1:0.25;
-        int wheelState = xBtn ? 1:0;
+        double wheelState = xBtn ? 0.7:0;
 
         grab.setPosition(grabPos);
-        spinWheel.setPower(wheelState);
+        spinWheel.setPower(-wheelState);
 
         if (gamepad1.dpad_up) {
             double newPos = armServo.getPosition();
