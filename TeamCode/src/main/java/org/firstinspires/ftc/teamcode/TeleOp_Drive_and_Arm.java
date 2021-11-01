@@ -29,7 +29,7 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         //touchSens = hardwareMap.get(DigitalChannel.class,"touch_Sensor");
 
         //touchSens.setMode(DigitalChannel.Mode.INPUT);
-        leftWheel.setDirection(DcMotor.Direction.REVERSE);
+        rightWheel.setDirection(DcMotor.Direction.REVERSE);
     }
 
     @Override
