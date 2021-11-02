@@ -38,7 +38,7 @@ public class AutonomousLinear extends LinearOpMode{
             boolean btnState = robot.touchSens.getState();
 
             if (!btnState){
-                robot.Left_DcMotor.setPower(0); //turn off motors and spin core hex for 3 sec if
+                robot.Left_DcMotor.setPower(0); //turn off motors and spin core hex for 3 sec if touch sensor pressed
                 robot.Right_DcMotor.setPower(0);
                 robot.Hex_Motor.setPower(.5);
                 sleep(3000);

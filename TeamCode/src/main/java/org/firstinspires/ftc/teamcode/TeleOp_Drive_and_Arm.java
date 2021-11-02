@@ -42,21 +42,20 @@ public class TeleOp_Drive_and_Arm extends OpMode {
 
     @Override
     public void loop() {
-        double throttle = -gamepad1.left_stick_y; // don't change this part, this is the actual drive code
-        double turn = gamepad1.left_stick_x;
-        double leftSpeed = throttle - turn;
-        double rightSpeed = throttle + turn;
-
-        leftWheel.setPower(leftSpeed);
-        rightWheel.setPower(rightSpeed); // anything under here is just experimental
 
         boolean buttonState = touchSens.getState(); // no use for touch sensor rn, but maybe in future
         boolean aBtn = gamepad1.a;
         boolean xBtn = gamepad1.x;
 
+        double throttle = -gamepad1.left_stick_y; // don't change this part, this is the actual drive code
+        double turn = gamepad1.left_stick_x;
+        double leftSpeed = throttle - turn;
+        double rightSpeed = throttle + turn;
         double grabPos = aBtn ? 1:0.25;
         double wheelState = xBtn ? 0.7:0;
 
+        leftWheel.setPower(leftSpeed);
+        rightWheel.setPower(rightSpeed);
         grab.setPosition(grabPos);
         spinWheel.setPower(-wheelState);
 
