@@ -1,9 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -15,9 +15,11 @@ public class TeleOp_Drive_and_Arm extends OpMode {
     Servo armServo;
     DcMotor spinWheel;
     Servo grab;
-    //DigitalChannel touchSens;
+    DigitalChannel touchSens;
 
     static final double increment = 0.005;
+    static final int maxPos = 1;
+    static final int minPos = 0;
 
     @Override
     public void init() {
@@ -26,9 +28,9 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         armServo = hardwareMap.get(Servo.class, "servoArm");
         grab = hardwareMap.get(Servo.class, "servoClaw");
         spinWheel = hardwareMap.get(DcMotor.class,"Hex_Motor2");
-        //touchSens = hardwareMap.get(DigitalChannel.class,"touch_Sensor");
+        touchSens = hardwareMap.get(DigitalChannel.class,"touch_Sensor");
 
-        //touchSens.setMode(DigitalChannel.Mode.INPUT);
+        touchSens.setMode(DigitalChannel.Mode.INPUT);
         rightWheel.setDirection(DcMotor.Direction.REVERSE);
     }
 
@@ -48,7 +50,7 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         leftWheel.setPower(leftSpeed);
         rightWheel.setPower(rightSpeed); // anything under here is just experimental
 
-        //boolean buttonState = touchSens.getState();
+        boolean buttonState = touchSens.getState();
         boolean aBtn = gamepad1.a;
         boolean xBtn = gamepad1.x;
 
@@ -62,7 +64,7 @@ public class TeleOp_Drive_and_Arm extends OpMode {
             double newPos = armServo.getPosition();
             newPos += increment;
 
-            if (newPos<=1 && newPos>=0) {
+            if (newPos<=maxPos && newPos>=minPos) {
                 armServo.setPosition(newPos);
             }
         }
@@ -71,7 +73,7 @@ public class TeleOp_Drive_and_Arm extends OpMode {
             double newPos = armServo.getPosition();
             newPos -= increment;
 
-            if (newPos<=1 && newPos>=0) {
+            if (newPos<=maxPos && newPos>=minPos) {
                 armServo.setPosition(newPos);
             }
         }
