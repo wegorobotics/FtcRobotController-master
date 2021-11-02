@@ -31,7 +31,7 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         touchSens = hardwareMap.get(DigitalChannel.class,"touch_Sensor");
 
         touchSens.setMode(DigitalChannel.Mode.INPUT);
-        rightWheel.setDirection(DcMotor.Direction.REVERSE);
+        rightWheel.setDirection(DcMotor.Direction.REVERSE); // needs to be reverse because we're using gears (normally left would be in reverse)
     }
 
     @Override
@@ -50,7 +50,7 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         leftWheel.setPower(leftSpeed);
         rightWheel.setPower(rightSpeed); // anything under here is just experimental
 
-        boolean buttonState = touchSens.getState();
+        boolean buttonState = touchSens.getState(); // no use for touch sensor rn, but maybe in future
         boolean aBtn = gamepad1.a;
         boolean xBtn = gamepad1.x;
 
