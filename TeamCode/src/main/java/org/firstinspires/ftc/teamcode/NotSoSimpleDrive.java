@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp (name="Simple Drive 2 Electric Boogaloo",group="I guess this is no longer test code")
-//@Disabled
+@Disabled // this is old code, don't want it to show up on driver hub
 public class NotSoSimpleDrive extends OpMode {
     DcMotor leftWheel;
     DcMotor rightWheel;
