@@ -47,14 +47,12 @@ public class AutonomousLinear extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-
         robot.init(hardwareMap);
 
         robot.grab.setPosition(1); // close claw on init, keeping pre-load in
         waitForStart();
 
         if (opModeIsActive()) {
-
             drive(0.7,0.7,30,15); // adjust speeds/distance as needed
 
             runtime.reset(); //reset time after driving
