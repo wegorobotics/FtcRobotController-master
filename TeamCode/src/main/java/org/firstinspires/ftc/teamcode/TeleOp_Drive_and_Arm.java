@@ -31,7 +31,7 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         touchSens = hardwareMap.get(DigitalChannel.class,"touch_Sensor");
 
         touchSens.setMode(DigitalChannel.Mode.INPUT);
-        leftWheel.setDirection(DcMotor.Direction.REVERSE); // needs to be reverse because we're using gears (normally left would be in reverse)
+        leftWheel.setDirection(DcMotor.Direction.REVERSE); // needs to be reverse, since we switched front and back of robot
     }
 
     @Override

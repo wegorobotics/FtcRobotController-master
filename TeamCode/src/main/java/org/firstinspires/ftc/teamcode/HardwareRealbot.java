@@ -22,7 +22,7 @@ public class HardwareRealbot {
 
     HardwareMap hwMap;
 
-    public HardwareRealbot(){
+    public HardwareRealbot() {
     }
 
     public void init(HardwareMap ahwMap) {
