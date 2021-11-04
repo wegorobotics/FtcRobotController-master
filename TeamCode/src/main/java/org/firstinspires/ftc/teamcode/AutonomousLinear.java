@@ -55,7 +55,7 @@ public class AutonomousLinear extends LinearOpMode {
         if (opModeIsActive()) {
             drive(0.7,0.7,30,15); // adjust speeds/distance as needed
 
-            runtime.reset(); //reset time after driving
+            runtime.reset(); // reset time after driving
 
             while (opModeIsActive() && runtime.seconds() <= 5 ) {
                 robot.arm.setPosition(0.5); //raise arm
