@@ -10,7 +10,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp (name="it's drive time",group="idk")
 //@Disabled
 public class TeleOp_Drive_and_Arm extends OpMode {
-
     DcMotor leftWheel;
     DcMotor rightWheel;
     Servo armServo;
@@ -43,7 +42,6 @@ public class TeleOp_Drive_and_Arm extends OpMode {
 
     @Override
     public void loop() {
-
         boolean buttonState = touchSens.getState(); // no use for touch sensor rn, but maybe in future
         boolean aBtn = gamepad1.a;
         boolean xBtn = gamepad1.x;
