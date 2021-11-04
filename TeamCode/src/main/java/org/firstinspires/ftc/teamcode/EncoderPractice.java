@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @TeleOp(name="Encoder Practice",group="Practice")
 
 public class EncoderPractice extends OpMode {
-    HardwareTestbot robot = new HardwareTestbot();
+    HardwareRealbot robot = new HardwareRealbot();
 
     @Override
     public void init() {

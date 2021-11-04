@@ -32,12 +32,12 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         touchSens = hardwareMap.get(DigitalChannel.class,"touch_Sensor");
 
         touchSens.setMode(DigitalChannel.Mode.INPUT);
-        rightWheel.setDirection(DcMotor.Direction.REVERSE); // needs to be reverse because we're using gears (normally left would be in reverse)
+        leftWheel.setDirection(DcMotor.Direction.REVERSE); // needs to be reverse because we're using gears (normally left would be in reverse)
     }
 
     @Override
     public void start() {
-        grab.setPosition(0.25);
+        grab.setPosition(0.75);
         armServo.setPosition(0.5);
     }
 
@@ -58,7 +58,7 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         leftWheel.setPower(leftSpeed);
         rightWheel.setPower(rightSpeed);
         grab.setPosition(grabPos);
-        spinWheel.setPower(-wheelState);
+        spinWheel.setPower(wheelState);
 
         if (gamepad1.dpad_up) {
             double newPos = armServo.getPosition();
