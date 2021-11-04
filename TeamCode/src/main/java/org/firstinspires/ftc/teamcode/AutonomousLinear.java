@@ -37,7 +37,7 @@ public class AutonomousLinear extends LinearOpMode {
             robot.Right_DcMotor.setPower(rightPower);
 
             while (opModeIsActive() && (robot.Left_DcMotor.isBusy() || robot.Right_DcMotor.isBusy())) {
-                //do nothing
+                // wait for code to finish
             }
 
             robot.Left_DcMotor.setPower(0);
