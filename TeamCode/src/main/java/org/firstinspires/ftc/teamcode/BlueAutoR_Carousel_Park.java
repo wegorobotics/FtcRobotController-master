@@ -54,12 +54,10 @@ public class BlueAutoR_Carousel_Park extends LinearOpMode {
         waitForStart();
 
         if (opModeIsActive()) {
-
             robot.Left_DcMotor.setDirection(DcMotor.Direction.FORWARD);
             robot.Right_DcMotor.setDirection(DcMotor.Direction.REVERSE);
 
             drive(0.7,0.7,3, 3); // adjust speeds/distance as needed
-
             drive(0.5,0.5,1,32);
 
             robot.Left_DcMotor.setDirection(DcMotor.Direction.REVERSE);
@@ -77,7 +75,6 @@ public class BlueAutoR_Carousel_Park extends LinearOpMode {
             drive(0.7,0.7,10,10);
             drive(0.5,0.5,21,1);
             drive(0.7,0.7,12.75,12.75);
-
         }
     }
 }
