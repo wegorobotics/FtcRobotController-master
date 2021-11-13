@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -27,16 +28,17 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         rightWheel = hardwareMap.get(DcMotor.class, "Right_DcMotor");
         armServo = hardwareMap.get(Servo.class, "servoArm");
         grab = hardwareMap.get(Servo.class, "servoClaw");
-        spinWheel = hardwareMap.get(DcMotor.class,"Hex_Motor2");
+        spinWheel = hardwareMap.get(DcMotor.class,"Hex_Motor");
         touchSens = hardwareMap.get(DigitalChannel.class,"touch_Sensor");
 
         touchSens.setMode(DigitalChannel.Mode.INPUT);
-        leftWheel.setDirection(DcMotor.Direction.REVERSE); // needs to be reverse, since we switched front and back of robot
+        leftWheel.setDirection(DcMotor.Direction.FORWARD);
+        rightWheel.setDirection(DcMotor.Direction.REVERSE);
     }
 
     @Override
     public void start() {
-        grab.setPosition(0.75);
+        grab.setPosition(0.40);
         armServo.setPosition(0.5);
     }
 
@@ -44,14 +46,16 @@ public class TeleOp_Drive_and_Arm extends OpMode {
     public void loop() {
         boolean buttonState = touchSens.getState(); // no use for touch sensor rn, but maybe in future
         boolean aBtn = gamepad1.a;
-        boolean xBtn = gamepad1.x;
+        //boolean xBtn = gamepad1.x;
+        boolean yBtn = gamepad1.y;
+        boolean rightBmper = gamepad1.right_bumper;
 
         double throttle = -gamepad1.left_stick_y; // don't change this part, this is the actual drive code
         double turn = gamepad1.left_stick_x;
-        double leftSpeed = throttle - turn;
-        double rightSpeed = throttle + turn;
-        double grabPos = aBtn ? 1:0.25;
-        double wheelState = xBtn ? 0.7:0;
+        double leftSpeed = throttle + turn;
+        double rightSpeed = throttle - turn;
+        double grabPos = aBtn ? 1:0.40;
+        double wheelState = yBtn ? -0.7:0;
 
         leftWheel.setPower(leftSpeed);
         rightWheel.setPower(rightSpeed);

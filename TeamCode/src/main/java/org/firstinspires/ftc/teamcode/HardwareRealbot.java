@@ -18,7 +18,7 @@ public class HardwareRealbot {
     public Servo grab;
     public Servo arm;
     public DigitalChannel touchSens;
-    public DistanceSensor distanceSens;
+    //public DistanceSensor distanceSens;
 
     HardwareMap hwMap;
 
@@ -35,7 +35,7 @@ public class HardwareRealbot {
         grab = hwMap.get(Servo.class,"servoClaw");
         arm = hwMap.get(Servo.class,"servoArm");
         touchSens = hwMap.get(DigitalChannel.class,"touch_Sensor");
-        distanceSens = hwMap.get(DistanceSensor.class,"distanceSensor");
+        //distanceSens = hwMap.get(DistanceSensor.class,"distanceSensor");
 
         touchSens.setMode(DigitalChannel.Mode.INPUT);
 
@@ -50,10 +50,9 @@ public class HardwareRealbot {
 
         Left_DcMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         Right_DcMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        Hex_Motor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        Hex_Motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         Left_DcMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         Right_DcMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        Hex_Motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 }
