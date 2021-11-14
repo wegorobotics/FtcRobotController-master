@@ -16,7 +16,6 @@ public class TeleOp_Drive_and_Arm extends OpMode {
     Servo armServo;
     DcMotor spinWheel;
     Servo grab;
-    DigitalChannel touchSens;
 
     static final double increment = 0.005;
     static final int maxPos = 1;
@@ -29,9 +28,7 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         armServo = hardwareMap.get(Servo.class, "servoArm");
         grab = hardwareMap.get(Servo.class, "servoClaw");
         spinWheel = hardwareMap.get(DcMotor.class,"Hex_Motor");
-        touchSens = hardwareMap.get(DigitalChannel.class,"touch_Sensor");
 
-        touchSens.setMode(DigitalChannel.Mode.INPUT);
         leftWheel.setDirection(DcMotor.Direction.FORWARD);
         rightWheel.setDirection(DcMotor.Direction.REVERSE);
     }
@@ -44,23 +41,37 @@ public class TeleOp_Drive_and_Arm extends OpMode {
 
     @Override
     public void loop() {
-        boolean buttonState = touchSens.getState(); // no use for touch sensor rn, but maybe in future
         boolean aBtn = gamepad1.a;
-        //boolean xBtn = gamepad1.x;
+        boolean bBtn = gamepad1.b;
         boolean yBtn = gamepad1.y;
-        boolean rightBmper = gamepad1.right_bumper;
 
-        double throttle = -gamepad1.left_stick_y; // don't change this part, this is the actual drive code
+        double throttle = -gamepad1.left_stick_y;
         double turn = gamepad1.left_stick_x;
         double leftSpeed = throttle + turn;
         double rightSpeed = throttle - turn;
         double grabPos = aBtn ? 1:0.40;
-        double wheelState = yBtn ? -0.7:0;
+        double wheelState = -0.7;
+        double wheelState2 = 0.7;
 
         leftWheel.setPower(leftSpeed);
         rightWheel.setPower(rightSpeed);
         grab.setPosition(grabPos);
-        spinWheel.setPower(wheelState);
+
+        if (yBtn) {
+            spinWheel.setPower(wheelState);
+        }
+        else {
+            spinWheel.setPower(0);
+        }
+
+        if (bBtn) {
+            spinWheel.setPower(wheelState2);
+        }
+
+        else {
+            spinWheel.setPower(0);
+        }
+
 
         if (gamepad1.dpad_up) {
             double newPos = armServo.getPosition();

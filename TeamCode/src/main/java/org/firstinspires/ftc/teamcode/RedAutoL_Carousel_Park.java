@@ -54,7 +54,7 @@ public class RedAutoL_Carousel_Park extends LinearOpMode {
         waitForStart();
 
         if (opModeIsActive()) {
-            drive(0.7,0.7,3, 3); // adjust speeds/distance as needed
+            drive(0.7,0.7,3, 3);
             drive(0.5,0.5,32,1);
 
             robot.Left_DcMotor.setDirection(DcMotor.Direction.REVERSE);
