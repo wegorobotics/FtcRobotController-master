@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Disabled
-@Autonomous(name="BlueAutoR_Carousel_Park",group="Blue")
-public class BlueAutoR_Carousel_Park extends LinearOpMode {
+@Autonomous(name="RedAutoR_Warehouse_Park",group="Red")
+public class RedAutoR_Warehouse_Park extends LinearOpMode {
     HardwareRealbot robot = new HardwareRealbot();
 
     private ElapsedTime runtime = new ElapsedTime();
@@ -54,27 +54,13 @@ public class BlueAutoR_Carousel_Park extends LinearOpMode {
 
         if (opModeIsActive()) {
             robot.arm.setPosition(0.5); // set arm upwards
-            robot.Left_DcMotor.setDirection(DcMotor.Direction.FORWARD);
-            robot.Right_DcMotor.setDirection(DcMotor.Direction.REVERSE);
-
-            drive(0.7,0.7,3, 3); // adjust speeds/distance as needed
+            drive(0.7,0.7,10, 10);
             drive(0.5,0.5,1,32);
 
             robot.Left_DcMotor.setDirection(DcMotor.Direction.REVERSE);
             robot.Right_DcMotor.setDirection(DcMotor.Direction.FORWARD);
 
-            drive(0.7,0.7,41.5,41.5);
-            drive(0.5,0.5,1,16.4);
-
-            robot.Hex_Motor.setPower(0.7);
-            sleep(3000);
-
-            robot.Left_DcMotor.setDirection(DcMotor.Direction.FORWARD);
-            robot.Right_DcMotor.setDirection(DcMotor.Direction.REVERSE);
-
-            drive(0.7,0.7,10,10);
-            drive(0.5,0.5,21,1);
-            drive(0.7,0.7,12.75,12.75);
+            drive(0.7,0.7,60,60);
         }
     }
 }

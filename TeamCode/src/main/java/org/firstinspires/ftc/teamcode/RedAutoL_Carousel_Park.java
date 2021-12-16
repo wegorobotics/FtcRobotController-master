@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-//@Disabled
+@Disabled
 @Autonomous(name="RedAutoL_Carousel_Park",group="Red")
 public class RedAutoL_Carousel_Park extends LinearOpMode {
     HardwareRealbot robot = new HardwareRealbot();
@@ -49,11 +49,11 @@ public class RedAutoL_Carousel_Park extends LinearOpMode {
     @Override
     public void runOpMode() {
         robot.init(hardwareMap);
-        robot.arm.setPosition(0.5); // set arm upwards
 
         waitForStart();
 
         if (opModeIsActive()) {
+            robot.arm.setPosition(0.5); // set arm upwards
             drive(0.7,0.7,3, 3);
             drive(0.5,0.5,32,1);
 
