@@ -12,11 +12,13 @@ import com.qualcomm.robotcore.hardware.Servo;
 //@Disabled
 public class HardwareRealbot {
 
-    public DcMotorEx Left_DcMotor;
-    public DcMotorEx Right_DcMotor;
-    public DcMotorEx Hex_Motor;
+    DcMotor bL_Wheel;
+    DcMotor bR_Wheel;
+    DcMotor fL_Wheel;
+    DcMotor fR_Wheel;
+    public DcMotorEx spinWheel;
+    public DcMotorEx arm;
     public Servo grab;
-    public Servo arm;
     public DigitalChannel touchSens;
     //public DistanceSensor distanceSens;
 
@@ -29,30 +31,44 @@ public class HardwareRealbot {
 
         hwMap = ahwMap;
 
-        Left_DcMotor = hwMap.get(DcMotorEx.class, "Left_DcMotor");
-        Right_DcMotor = hwMap.get(DcMotorEx.class,"Right_DcMotor");
-        Hex_Motor = hwMap.get(DcMotorEx.class,"Hex_Motor");
+        bL_Wheel = hwMap.get(DcMotor.class, "bL_DcMotor");
+        bR_Wheel = hwMap.get(DcMotor.class, "bR_DcMotor");
+        fL_Wheel = hwMap.get(DcMotor.class, "fL_DcMotor");
+        fR_Wheel = hwMap.get(DcMotor.class, "fR_DcMotor");
+        arm = hwMap.get(DcMotorEx.class, "arm");
+
+        spinWheel = hwMap.get(DcMotorEx.class,"spinny_wheel");
         grab = hwMap.get(Servo.class,"servoClaw");
-        arm = hwMap.get(Servo.class,"servoArm");
-        touchSens = hwMap.get(DigitalChannel.class,"touch_Sensor");
+        //touchSens = hwMap.get(DigitalChannel.class,"touch_Sensor");
         //distanceSens = hwMap.get(DistanceSensor.class,"distanceSensor");
 
-        touchSens.setMode(DigitalChannel.Mode.INPUT);
+        //touchSens.setMode(DigitalChannel.Mode.INPUT);
 
-        Right_DcMotor.setDirection(DcMotor.Direction.REVERSE);
+        bL_Wheel.setDirection(DcMotor.Direction.FORWARD);
+        bR_Wheel.setDirection(DcMotor.Direction.REVERSE);
+        fL_Wheel.setDirection(DcMotor.Direction.FORWARD);
+        fR_Wheel.setDirection(DcMotor.Direction.REVERSE);
 
-        Left_DcMotor.setPower(0);
-        Right_DcMotor.setPower(0);
+        bL_Wheel.setPower(0);
+        bR_Wheel.setPower(0);
+        fL_Wheel.setPower(0);
+        fR_Wheel.setPower(0);
 
         //Left_DcMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //Right_DcMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //Hex_Motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        Left_DcMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        Right_DcMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        Hex_Motor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        bL_Wheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        bR_Wheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        fL_Wheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        fR_Wheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        Left_DcMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        Right_DcMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        spinWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        bL_Wheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        bR_Wheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        fL_Wheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        fR_Wheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 }

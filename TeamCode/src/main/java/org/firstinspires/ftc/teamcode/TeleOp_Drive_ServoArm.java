@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp (name="it's drive time",group="idk")
-//@Disabled
+@Disabled
 public class TeleOp_Drive_ServoArm extends OpMode {
     DcMotor bL_Wheel;
     DcMotor bR_Wheel;

@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp (name="it's drive time, electric boogaloo 2",group="idk")
-//@Disabled
+@Disabled
 public class TeleOp_Drive_and_Arm extends OpMode {
     DcMotor bL_Wheel;
     DcMotor bR_Wheel;
@@ -41,7 +41,7 @@ public class TeleOp_Drive_and_Arm extends OpMode {
     @Override
     public void start() {
 
-        grab.setPosition(0.6);
+        //grab.setPosition(0);
     }
 
     @Override
@@ -60,15 +60,17 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         double turn = gamepad1.left_stick_x * 0.6;
         double leftSpeed = throttle + turn;
         double rightSpeed = throttle - turn;
-        double grabPos = aBtn ? 0.3 : 0.6;
+        //double grabPos = aBtn ? 0.1 : 0;
 
         //encoder positions//
-        int topLevel = 400;
-        int midLevel = 500;
-        int botLevel = 600;
+        int topLevel = 900;
+        int midLevel = 1100;
+        int botLevel = 1369;
         int pickupLevel = 0;
 
-        grab.setPosition(grabPos); // servo claw position
+        int speed = 400;
+
+        //grab.setPosition(grabPos); // servo claw position
 
         //it's drive time//
         bL_Wheel.setPower(leftSpeed);
@@ -91,22 +93,25 @@ public class TeleOp_Drive_and_Arm extends OpMode {
         }
 
         if (dpadLeft) { // pick up position
-            arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
             arm.setTargetPosition(pickupLevel);
+            arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
 
             int currentPosition = arm.getCurrentPosition();
 
             if (currentPosition > pickupLevel) {
 
                 arm.setDirection(DcMotorEx.Direction.REVERSE);
+                arm.setVelocity(speed);
             }
-
-            arm.setVelocity(200);
+            else {
+                arm.setDirection(DcMotorEx.Direction.FORWARD);
+                arm.setVelocity(speed);
+            }
         }
 
         if (dpadUp) { // top level position
-            arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
             arm.setTargetPosition(topLevel);
+            arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
 
             int currentPosition = arm.getCurrentPosition();
 
@@ -114,42 +119,45 @@ public class TeleOp_Drive_and_Arm extends OpMode {
 
                 arm.setDirection(DcMotorEx.Direction.REVERSE);
             }
-
-            arm.setVelocity(200);
+            else {
+                arm.setDirection(DcMotorEx.Direction.FORWARD);
+                arm.setVelocity(speed);
+            }
         }
 
         if (dpadRight) { // middle level position
-            arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
             arm.setTargetPosition(midLevel);
+            arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
 
             int currentPosition = arm.getCurrentPosition();
 
             if (currentPosition > midLevel) {
                 arm.setDirection(DcMotorEx.Direction.REVERSE);
+                arm.setVelocity(speed);
             }
-
-            arm.setVelocity(200);
+            else {
+                arm.setDirection(DcMotorEx.Direction.FORWARD);
+                arm.setVelocity(speed);
+            }
         }
 
         if (dpadDown) { // bottom level position
-            arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
             arm.setTargetPosition(botLevel);
+            arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
 
             int currentPosition = arm.getCurrentPosition();
 
             if (currentPosition > botLevel) {
 
                 arm.setDirection(DcMotorEx.Direction.REVERSE);
+                arm.setVelocity(speed);
             }
-
-            arm.setVelocity(200);
+            else {
+                arm.setDirection(DcMotorEx.Direction.FORWARD);
+                arm.setVelocity(speed);
+            }
         }
 
-        else {
-
-            arm.setPower(0);
-            arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        }
     }
 
     @Override
