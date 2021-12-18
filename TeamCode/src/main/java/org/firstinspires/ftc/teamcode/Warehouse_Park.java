@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 //@Disabled
 @Autonomous(name="Warehouse_Park",group="idk")
-public class BlueAutoL_Warehouse_Park extends LinearOpMode {
+public class Warehouse_Park extends LinearOpMode {
 
     HardwareRealbot robot = new HardwareRealbot();
 
