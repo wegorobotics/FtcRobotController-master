@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-//@Disabled
+@Disabled
 @Autonomous(name="MOVE",group="idk")
 public class MoveOutOfTheWay extends LinearOpMode {
 
@@ -18,7 +18,7 @@ public class MoveOutOfTheWay extends LinearOpMode {
 
     static final double HD_CountsPerRev = 28;
     static final double driveGearReduction = 20.15293;
-    static final double wheelCircumference = 90 * Math.PI;
+    static final double wheelCircumference = 120 * Math.PI;
     static final double countsPerMM = (HD_CountsPerRev * driveGearReduction) / wheelCircumference;
     static final double countsPerInch = countsPerMM * 25.4;
 

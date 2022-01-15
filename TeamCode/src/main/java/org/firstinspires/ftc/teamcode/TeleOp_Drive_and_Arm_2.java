@@ -39,8 +39,6 @@ public class TeleOp_Drive_and_Arm_2 extends OpMode {
 
     @Override
     public void start() {
-
-        grab.setPosition(0.15);
     }
 
     @Override
@@ -80,10 +78,10 @@ public class TeleOp_Drive_and_Arm_2 extends OpMode {
         }
 
         if (rightBumper) {
-            arm.setPower(0.325);
+            arm.setPower(0.8);
         }
         if (leftBumper){
-            arm.setPower(-0.325);
+            arm.setPower(-0.8);
         }
 
         if (!rightBumper && !leftBumper) {

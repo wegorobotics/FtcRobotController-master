@@ -9,8 +9,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //@Disabled
-@Autonomous(name="Warehouse_Park",group="idk")
-public class Warehouse_Park extends LinearOpMode {
+@Autonomous(name="Carousel_Park_RedL",group="Red")
+public class Carousel_Park_RedL extends LinearOpMode {
 
     HardwareRealbot robot = new HardwareRealbot();
 
@@ -18,7 +18,7 @@ public class Warehouse_Park extends LinearOpMode {
 
     static final double HD_CountsPerRev = 28;
     static final double driveGearReduction = 20.15293;
-    static final double wheelCircumference = 90 * Math.PI;
+    static final double wheelCircumference = 120 * Math.PI;
     static final double countsPerMM = (HD_CountsPerRev * driveGearReduction) / wheelCircumference;
     static final double countsPerInch = countsPerMM * 25.4;
 
@@ -63,12 +63,31 @@ public class Warehouse_Park extends LinearOpMode {
         waitForStart();
 
         if (opModeIsActive()) {
-            robot.arm.setTargetPosition(400);
-            robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.arm.setVelocity(400);
-            sleep(400);
+            robot.arm.setPower(0.5);
+            sleep(1200);
+            robot.arm.setPower(0);
+            robot.arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-            drive(0.6,0.6,45, 45);
+            drive(0.5,0.5,16.5, 16.5);
+            drive(0.25,0.25,2.25, 2.25);
+            sleep(500);
+            drive(0.25,0.25,1, 1);
+            sleep(200);
+            drive(0.25,0.25,1,1);
+
+            robot.spinWheel.setPower(-1);
+            sleep(2500);
+            robot.spinWheel.setPower(0);
+
+            robot.bL_Wheel.setDirection(DcMotor.Direction.REVERSE);
+            robot.fL_Wheel.setDirection(DcMotor.Direction.REVERSE);
+
+            drive(0.5,0.5,24, 24);
+
+            robot.bR_Wheel.setDirection(DcMotor.Direction.FORWARD);
+            robot.fR_Wheel.setDirection(DcMotor.Direction.FORWARD);
+            drive(0.5,0.5,27, 27);
+
         }
     }
 }
