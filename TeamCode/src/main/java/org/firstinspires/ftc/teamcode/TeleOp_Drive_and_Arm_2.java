@@ -39,6 +39,7 @@ public class TeleOp_Drive_and_Arm_2 extends OpMode {
 
     @Override
     public void start() {
+        grab.setPosition(0);
     }
 
     @Override

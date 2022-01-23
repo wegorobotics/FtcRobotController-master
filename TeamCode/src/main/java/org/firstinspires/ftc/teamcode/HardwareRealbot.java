@@ -62,8 +62,13 @@ public class HardwareRealbot {
         bR_Wheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         fL_Wheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         fR_Wheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
+        bL_Wheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        bR_Wheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        fL_Wheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        fR_Wheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        arm.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         spinWheel.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
     }

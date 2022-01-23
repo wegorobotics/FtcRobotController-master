@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Disabled
+//@Disabled
 @Autonomous(name="MOVE",group="idk")
 public class MoveOutOfTheWay extends LinearOpMode {
 
@@ -63,12 +63,13 @@ public class MoveOutOfTheWay extends LinearOpMode {
         waitForStart();
 
         if (opModeIsActive()) {
-            robot.arm.setTargetPosition(400);
-            robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.arm.setVelocity(400);
-            sleep(400);
 
-            drive(0.6,0.6,35, 35);
+            robot.arm.setPower(0.5);
+            sleep(1200);
+            robot.arm.setPower(0);
+            robot.arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+            drive(0.5, 0.5, 60, 60);
         }
     }
 }

@@ -59,6 +59,7 @@ public class DropOff_RedR extends LinearOpMode {
     @Override
     public void runOpMode() {
         rb.init(hardwareMap);
+        rb.grab.setPosition(0.15);
 
         waitForStart();
 
