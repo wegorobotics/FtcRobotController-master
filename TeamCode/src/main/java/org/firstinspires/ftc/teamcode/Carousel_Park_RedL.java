@@ -71,12 +71,12 @@ public class Carousel_Park_RedL extends LinearOpMode {
             drive(0.5,0.5,16.5, 16.5);
             drive(0.25,0.25,2.25, 2.25);
             sleep(500);
-            drive(0.25,0.25,1, 1);
+            drive(0.25,0.25,2, 2);
             sleep(200);
-            drive(0.25,0.25,1,1);
+            drive(0.25,0.25,1.5,1.5);
 
-            robot.spinWheel.setPower(-1);
-            sleep(2500);
+            robot.spinWheel.setPower(0.15);
+            sleep(3000);
             robot.spinWheel.setPower(0);
 
             robot.bL_Wheel.setDirection(DcMotor.Direction.REVERSE);
@@ -87,7 +87,6 @@ public class Carousel_Park_RedL extends LinearOpMode {
             robot.bR_Wheel.setDirection(DcMotor.Direction.FORWARD);
             robot.fR_Wheel.setDirection(DcMotor.Direction.FORWARD);
             drive(0.5,0.5,27, 27);
-
         }
     }
 }

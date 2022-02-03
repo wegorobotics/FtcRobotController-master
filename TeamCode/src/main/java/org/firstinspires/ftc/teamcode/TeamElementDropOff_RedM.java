@@ -9,8 +9,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //@Disabled
-@Autonomous(name="DropOff_RedR",group="Red")
-public class DropOff_RedR extends LinearOpMode {
+@Autonomous(name="TeamElementDropOff_RedM",group="Red")
+public class TeamElementDropOff_RedM extends LinearOpMode {
 
     HardwareRealbot rb = new HardwareRealbot();
 
@@ -71,7 +71,7 @@ public class DropOff_RedR extends LinearOpMode {
 
             rb.grab.setPosition(0);
             sleep(1000);
-            drive(0.6,0.6,29, 29);
+            drive(0.6,0.6,20, 20);
             sleep(500);
             drive(0.3,0.3,3, 3);
             sleep(500);
@@ -81,7 +81,7 @@ public class DropOff_RedR extends LinearOpMode {
             sleep(1000);
 
             rb.arm.setPower(0.35);
-            sleep(3200);
+            sleep(3400);
             rb.arm.setPower(0);
             rb.arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             rb.grab.setPosition(0.15);
@@ -92,20 +92,37 @@ public class DropOff_RedR extends LinearOpMode {
             rb.fL_Wheel.setDirection(DcMotor.Direction.FORWARD);
             rb.fR_Wheel.setDirection(DcMotor.Direction.REVERSE);
 
-            drive(0.25,0.25,10, 10);
+            drive(0.25,0.25,12, 12);
             sleep(1000);
 
             rb.bR_Wheel.setDirection(DcMotor.Direction.FORWARD);
             rb.fR_Wheel.setDirection(DcMotor.Direction.FORWARD);
 
-            drive(0.25,0.25,30, 30);
+            drive(0.25,0.25,23, 23);
 
             rb.bL_Wheel.setDirection(DcMotor.Direction.REVERSE);
             rb.bR_Wheel.setDirection(DcMotor.Direction.FORWARD);
             rb.fL_Wheel.setDirection(DcMotor.Direction.REVERSE);
             rb.fR_Wheel.setDirection(DcMotor.Direction.FORWARD);
 
-            drive(0.6,0.6,60, 60);
+            drive(0.6,0.6,70, 70);
+
+            rb.bR_Wheel.setDirection(DcMotor.Direction.REVERSE);
+            rb.fR_Wheel.setDirection(DcMotor.Direction.REVERSE);
+
+            drive(0.25,0.25,23, 23);
+
+            rb.bL_Wheel.setDirection(DcMotor.Direction.REVERSE);
+            rb.bR_Wheel.setDirection(DcMotor.Direction.FORWARD);
+            rb.fL_Wheel.setDirection(DcMotor.Direction.REVERSE);
+            rb.fR_Wheel.setDirection(DcMotor.Direction.FORWARD);
+
+            drive(0.25,0.6,10, 10);
+
+            rb.arm.setDirection(DcMotor.Direction.REVERSE);
+            rb.arm.setPower(0.35);
+            sleep(2000);
+            rb.arm.setPower(0);
         }
     }
 }

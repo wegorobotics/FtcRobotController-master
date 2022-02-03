@@ -80,7 +80,7 @@ public class Carousel_Park_BlueR extends LinearOpMode {
             rb.bR_Wheel.setDirection(DcMotor.Direction.REVERSE);
             rb.fR_Wheel.setDirection(DcMotor.Direction.REVERSE);
 
-            drive(0.5,0.5,10,10);
+            drive(0.5,0.5,12.5,12.5);
             sleep(250);
             drive(0.25,0.25,3,3);
             sleep(250);
@@ -89,8 +89,8 @@ public class Carousel_Park_BlueR extends LinearOpMode {
             drive(0.25,0.25,1.1,1.1);
             sleep(500);
 
-            rb.spinWheel.setPower(1);
-            sleep(2500);
+            rb.spinWheel.setPower(-0.15);
+            sleep(3000);
             rb.spinWheel.setPower(0);
 
             rb.bL_Wheel.setDirection(DcMotor.Direction.REVERSE);
