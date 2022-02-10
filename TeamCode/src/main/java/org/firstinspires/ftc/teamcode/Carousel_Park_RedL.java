@@ -4,8 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //@Disabled
@@ -75,7 +73,7 @@ public class Carousel_Park_RedL extends LinearOpMode {
             sleep(200);
             drive(0.25,0.25,1.5,1.5);
 
-            robot.spinWheel.setPower(0.15);
+            robot.spinWheel.setPower(0.5);
             sleep(3000);
             robot.spinWheel.setPower(0);
 

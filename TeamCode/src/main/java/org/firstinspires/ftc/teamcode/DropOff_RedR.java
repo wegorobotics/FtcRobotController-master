@@ -4,8 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //@Disabled
@@ -81,7 +79,7 @@ public class DropOff_RedR extends LinearOpMode {
             sleep(1000);
 
             rb.arm.setPower(0.35);
-            sleep(3200);
+            sleep(3400);
             rb.arm.setPower(0);
             rb.arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             rb.grab.setPosition(0.15);

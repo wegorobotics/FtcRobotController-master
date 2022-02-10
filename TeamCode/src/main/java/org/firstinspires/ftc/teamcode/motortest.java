@@ -5,8 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@Disabled
-@TeleOp (name="motortest",group="idk")
+//@Disabled
+@TeleOp (name="motortest",group="hula hoop")
 
 public class motortest extends OpMode {
     DcMotor bL_Wheel;
@@ -14,7 +14,7 @@ public class motortest extends OpMode {
     @Override
     public void init() {
 
-        bL_Wheel = hardwareMap.get(DcMotor.class, "bL_DcMotor");
+        bL_Wheel = hardwareMap.get(DcMotor.class, "spinny_wheel");
     }
 
     @Override
@@ -22,26 +22,20 @@ public class motortest extends OpMode {
 
         boolean aBtn = gamepad1.a;
         boolean bBtn = gamepad1.b;
-        boolean xBtn = gamepad1.x;
-        boolean yBtn = gamepad1.y;
 
         if (aBtn) {
-            bL_Wheel.setPower(0.7);
+            bL_Wheel.setPower(0.25);
         }
+       else {
+           bL_Wheel.setPower(0);
+        }
+
         if (bBtn) {
-            bL_Wheel.setPower(-0.7);
+            bL_Wheel.setPower(-0.25);
         }
-
-        if (xBtn) {
-            bL_Wheel.setPower(1);
-        }
-        if (yBtn){
-            bL_Wheel.setPower(-1);
-        }
-
-        if (!xBtn && !yBtn && !aBtn && bBtn) {
+        else {
             bL_Wheel.setPower(0);
-            bL_Wheel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         }
+
     }
 }

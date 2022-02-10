@@ -118,7 +118,7 @@ public class TeamElementDropOff_BlueM extends LinearOpMode {
             drive(0.25,0.6,10, 10);
 
             rb.arm.setDirection(DcMotor.Direction.REVERSE);
-            rb.arm.setPower(0.35);
+            rb.arm.setPower(0.5);
             sleep(2000);
             rb.arm.setPower(0);
         }
