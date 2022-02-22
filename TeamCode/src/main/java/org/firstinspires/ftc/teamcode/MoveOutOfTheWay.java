@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 //@Disabled
-@Autonomous(name="MOVE",group="idk")
+@Autonomous(name="MOVE",group="bb cream papapa lipstick mamama")
 public class MoveOutOfTheWay extends LinearOpMode {
 
     HardwareRealbot robot = new HardwareRealbot();

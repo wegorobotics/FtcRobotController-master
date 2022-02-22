@@ -16,8 +16,16 @@ apply from: '../build.common.gradle'
 apply from: '../build.dependencies.gradle'
 
 android {
+
+
     androidResources {
         noCompress 'tflite'
+    }
+    buildToolsVersion '30.0.3'
+    packagingOptions {
+        jniLibs {
+            pickFirsts += ['**/*.so', '**/*.so']
+        }
     }
 }
 

@@ -87,7 +87,7 @@ public class Carousel_Park_BlueR extends LinearOpMode {
             drive(0.25,0.25,1.1,1.1);
             sleep(500);
 
-            rb.spinWheel.setPower(-0.5);
+            rb.spinWheel.setPower(0.5);
             sleep(3000);
             rb.spinWheel.setPower(0);
 

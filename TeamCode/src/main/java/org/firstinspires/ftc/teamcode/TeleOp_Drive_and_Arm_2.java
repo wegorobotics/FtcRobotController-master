@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -10,6 +11,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp (name="willow girl boss, slay",group="stan loona")
 //@Disabled
 public class TeleOp_Drive_and_Arm_2 extends OpMode {
+    RevBlinkinLedDriver rgbLights;
     DcMotor bL_Wheel;
     DcMotor bR_Wheel;
     DcMotor fL_Wheel;
@@ -20,7 +22,7 @@ public class TeleOp_Drive_and_Arm_2 extends OpMode {
 
     @Override
     public void init() {
-
+        rgbLights = hardwareMap.get(RevBlinkinLedDriver.class, "lights");
         bL_Wheel = hardwareMap.get(DcMotor.class, "bL_DcMotor");
         bR_Wheel = hardwareMap.get(DcMotor.class, "bR_DcMotor");
         fL_Wheel = hardwareMap.get(DcMotor.class, "fL_DcMotor");
@@ -52,8 +54,8 @@ public class TeleOp_Drive_and_Arm_2 extends OpMode {
         boolean rightBumper = gamepad1.right_bumper;
         boolean leftBumper = gamepad1.left_bumper;
 
-        double throttle = -gamepad1.left_stick_y * 0.6; // 60% of speed when driving
-        double turn = gamepad1.left_stick_x * 0.6;
+        double throttle = -gamepad1.left_stick_y;
+        double turn = gamepad1.left_stick_x;
         double leftSpeed = throttle + turn;
         double rightSpeed = throttle - turn;
         double grabPos = aBtn ? 0 : 0.15;
@@ -80,20 +82,18 @@ public class TeleOp_Drive_and_Arm_2 extends OpMode {
 
         if (rightBumper) {
             arm.setPower(0.65);
+            rgbLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.COLOR_WAVES_OCEAN_PALETTE);
         }
 
         if (leftBumper) {
             arm.setPower(-0.65);
+            rgbLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.FIRE_MEDIUM);
         }
 
         if (!rightBumper && !leftBumper) {
             arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             arm.setPower(0);
         }
-    }
-
-    @Override
-    public void stop() {
     }
 }
 
