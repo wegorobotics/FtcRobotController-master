@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@TeleOp (name="it's drive time, electric boogaloo 2",group="idk")
+@TeleOp (name="it's drive time, electric boogaloo 2",group="shy shy shy")
 @Disabled
 public class TeleOp_Drive_and_Arm extends OpMode {
     DcMotor bL_Wheel;
