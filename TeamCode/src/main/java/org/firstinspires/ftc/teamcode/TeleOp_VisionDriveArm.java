@@ -47,9 +47,11 @@ public class TeleOp_VisionDriveArm extends OpMode {
     @Override
     public void init() {
 
+        //initializing vuforia and tensorflow object detector
         initVuforia();
         initTFOD();
 
+        // finding hardware from configuration
         rgbLights = hardwareMap.get(RevBlinkinLedDriver.class, "lights");
         bL_Wheel = hardwareMap.get(DcMotor.class, "bL_DcMotor");
         bR_Wheel = hardwareMap.get(DcMotor.class, "bR_DcMotor");
@@ -61,6 +63,7 @@ public class TeleOp_VisionDriveArm extends OpMode {
 
         arm.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
 
+        // setting motor directions for driving
         bL_Wheel.setDirection(DcMotor.Direction.FORWARD);
         bR_Wheel.setDirection(DcMotor.Direction.REVERSE);
         fL_Wheel.setDirection(DcMotor.Direction.FORWARD);
@@ -113,23 +116,23 @@ public class TeleOp_VisionDriveArm extends OpMode {
             spinWheel.setPower(0);
         }
 
-        if (rightBumper) {
+        if (rightBumper) { // moving arm counterclockwise (due to gear)
             arm.setPower(0.65);
             rgbLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.RAINBOW_WITH_GLITTER);
         }
 
-
         if (leftBumper) {
-            arm.setPower(-0.65);
+            arm.setPower(-0.65); // moving arm clockwise
             rgbLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.COLOR_WAVES_PARTY_PALETTE);
         }
 
-        if (!rightBumper && !leftBumper) {
+        if (!rightBumper && !leftBumper) { // applying resistance when motor is off
             arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             arm.setPower(0);
         }
 
-        if (tfod != null) {
+        if (tfod != null) { // telemetry of object position
+
             List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
 
             if (updatedRecognitions != null) {
@@ -147,7 +150,7 @@ public class TeleOp_VisionDriveArm extends OpMode {
         }
     }
 
-    public void initVuforia() {
+    public void initVuforia() { // initializing vuforia engine
 
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
 
@@ -157,7 +160,7 @@ public class TeleOp_VisionDriveArm extends OpMode {
         vuforia = ClassFactory.getInstance().createVuforia(parameters);
     }
 
-    public void initTFOD() {
+    public void initTFOD() { // intiializing tensorflow object detector
 
         int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
