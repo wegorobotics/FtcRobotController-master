@@ -82,12 +82,13 @@ public class TeleOp_Drive_and_Arm_2 extends OpMode {
 
         if (rightBumper) {
             arm.setPower(0.65);
-            rgbLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.COLOR_WAVES_OCEAN_PALETTE);
+            rgbLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.RAINBOW_WITH_GLITTER);
         }
+
 
         if (leftBumper) {
             arm.setPower(-0.65);
-            rgbLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.FIRE_MEDIUM);
+            rgbLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.COLOR_WAVES_PARTY_PALETTE);
         }
 
         if (!rightBumper && !leftBumper) {
