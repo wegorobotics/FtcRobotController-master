@@ -33,7 +33,7 @@ public class TeleOp_VisionDriveArm extends OpMode {
             "qexk+c2C2go6wm8lGwuVdx7fPEmCyuu8+NBzBLMiFFeUBWEYSrsZ10rA3enytUgfbHAnMT" +
             "mKVonKLL1Cn00vMrgauluhW5K+BYT";
 
-    RevBlinkinLedDriver rgbLights;
+    //RevBlinkinLedDriver rgbLights;
     VuforiaLocalizer vuforia;
     TFObjectDetector tfod;
     DcMotor bL_Wheel;
@@ -47,17 +47,17 @@ public class TeleOp_VisionDriveArm extends OpMode {
     @Override
     public void init() {
 
-        //initializing vuforia and tensorflow object detector
+        // initializing vuforia and tensorflow object detector
         initVuforia();
         initTFOD();
 
         // finding hardware from configuration
-        rgbLights = hardwareMap.get(RevBlinkinLedDriver.class, "lights");
+        //rgbLights = hardwareMap.get(RevBlinkinLedDriver.class, "lights");
         bL_Wheel = hardwareMap.get(DcMotor.class, "bL_DcMotor");
         bR_Wheel = hardwareMap.get(DcMotor.class, "bR_DcMotor");
         fL_Wheel = hardwareMap.get(DcMotor.class, "fL_DcMotor");
         fR_Wheel = hardwareMap.get(DcMotor.class, "fR_DcMotor");
-        spinWheel = hardwareMap.get(DcMotorEx.class, "spinny_wheel");
+        spinWheel = hardwareMap.get(DcMotorEx.class, "spinny_wheel"); //
         arm = hardwareMap.get(DcMotorEx.class, "arm");
         grab = hardwareMap.get(Servo.class, "servoClaw");
 
@@ -118,12 +118,12 @@ public class TeleOp_VisionDriveArm extends OpMode {
 
         if (rightBumper) { // moving arm counterclockwise (due to gear)
             arm.setPower(0.65);
-            rgbLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.RAINBOW_WITH_GLITTER);
+            //rgbLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.RAINBOW_WITH_GLITTER);
         }
 
         if (leftBumper) {
             arm.setPower(-0.65); // moving arm clockwise
-            rgbLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.COLOR_WAVES_PARTY_PALETTE);
+            //rgbLights.setPattern(RevBlinkinLedDriver.BlinkinPattern.COLOR_WAVES_PARTY_PALETTE);
         }
 
         if (!rightBumper && !leftBumper) { // applying resistance when motor is off
